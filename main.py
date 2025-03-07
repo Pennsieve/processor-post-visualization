@@ -5,11 +5,7 @@ from boto3 import client as boto3_client
 
 print("start of processing")
 
-def start_task():
-    isLocal = os.environ['IS_LOCAL']
-    if isLocal == 'true':
-        return "local-task-arn","container/task-arn/local"
-    
+def start_task():    
     ecs_client = boto3_client("ecs",  os.environ['REGION'])
     response = ecs_client.run_task(
         cluster = os.environ['CLUSTER_NAME'],
