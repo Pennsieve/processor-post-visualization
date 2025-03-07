@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  
+  post-visualization:
+    env_file:
+      - dev.env
+    image: pennsieve/post-visualization
+    volumes:
+      - ./data:/service/data
+    container_name: post-visualization
+    build:
+      context: .
+      dockerfile: ./Dockerfile
