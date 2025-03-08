@@ -5,7 +5,7 @@ from boto3 import client as boto3_client
 
 print("start of processing")
 
-def start_task():    
+def start_task():  
     ecs_client = boto3_client("ecs",  os.environ['REGION'])
     response = ecs_client.run_task(
         cluster = os.environ['CLUSTER_NAME'],
@@ -24,7 +24,6 @@ def start_task():
             'containerOverrides': [
                 {
                     'name': os.environ['VIZ_CONTAINER_NAME'],
-                    'environment': os.environ['ENVIRONMENT'],
                 },
             ],
     })
